@@ -1,0 +1,9 @@
+.Todo {
+	height: 25px;
+	line-height: 25px;
+}
+
+.Todo div {
+	display: inline-block;
+	width: 130px;
+}
