@@ -1,9 +1,14 @@
 .Todo {
-	height: 25px;
-	line-height: 25px;
+	height: 30px;
+	line-height: 30px;
 }
 
 .Todo div {
 	display: inline-block;
 	width: 130px;
+}
+
+.Todo button {
+	width: 25px;
+	height:21px;
 }

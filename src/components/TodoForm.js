@@ -2,7 +2,7 @@ import React from 'react';
 
 const TodoForm = props => {
 	return (
-		<form>
+		<form onSubmit={event => props.onFormSubmit(event)}>
 			<input 
 				type='text'
 				placeholder='enter new task to do'
@@ -15,12 +15,3 @@ const TodoForm = props => {
 }
 
 export default TodoForm;
-
-const Todo = props => {
-	return (
-		<li className={style.Todo}>
-			<div>{props.todo.text}</div>
-			<button onClick={() => props.onDeleteClick(props.todo.id)}>-</button>
-		</li>
-	);
-}

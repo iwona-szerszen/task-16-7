@@ -31,20 +31,25 @@ class App extends React.Component {
 			]
 		}
 	}
+	onFormSubmit(event) {
+		event.preventDefault();
+	}
 	onInputChange(event) {
-		let newTask = event.target.value;
+		const newTask = event.target.value;
 		this.setState( {newTask} );
 	}
 	addTodo(val) {
-		const todo = {
-			text: val,
-			id: uuid.v4()
-		};
-		const data = [...this.state.data, todo];
-		this.setState({
-			newTask: '',
-			data: data
-		});
+		if (val) {
+			const todo = {
+				text: val,
+				id: uuid.v4()
+			};
+			const data = [...this.state.data, todo];
+			this.setState({
+				newTask: '',
+				data: data
+			});
+		}
 	}
 	removeTodo(id) {
 		const remainder = this.state.data.filter(todo => todo.id !== id);
@@ -55,6 +60,7 @@ class App extends React.Component {
 			<div className={style.TodoApp}>
 				<Title title='To Do List' todosNumber={this.state.data.length} />
 				<TodoForm 
+					onFormSubmit={this.onFormSubmit.bind(this)}
 					onInputChange={this.onInputChange.bind(this)}
 					onAddClick={this.addTodo.bind(this)}
 					content={this.state.newTask}
@@ -64,11 +70,5 @@ class App extends React.Component {
 		);
 	}
 }
-
-
-
-
-
-
 
 export default hot(module)(App);
